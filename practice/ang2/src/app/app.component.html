@@ -1,0 +1,6 @@
+<div class="container p-3">
+    <p>Username</p>
+<input type="text" class="form-control mb-3" [(ngModel)]="username" placeholder="user">
+<h3 class="bg-warning text-center">Welcome, {{username}} !</h3>
+<button (click)="resetUsr()" [disabled] = "username === ''" class="btn btn-secondary" >Reset User</button>
+</div>
