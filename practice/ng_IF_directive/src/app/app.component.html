@@ -1,0 +1,7 @@
+<div class="container p-3">
+    <p>Username</p>
+<input type="text" class="form-control mb-3" [(ngModel)]="username" placeholder="user">
+<h3 class="bg-warning text-center" *ngIf="serverBoolean">Welcome, {{username}} !</h3>
+<button class="btn btn-info btn-block mb-2 mt-2" (click)="exec1()">C'mon</button>
+<button (click)="resetUsr()" [disabled] = "username === ''" class="btn btn-danger btn-block" >Reset User</button>
+</div>
