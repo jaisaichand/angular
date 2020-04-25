@@ -1,0 +1,24 @@
+<p>child works!</p>
+<p> {{ pMessage }} </p>
+
+<p #one>Hello one</p>
+<p #two>Hello two</p>
+
+<div class="card">
+
+    <div class="card-header">
+        {{ cHeader }}
+    </div>
+
+    <div class="card-body">
+        <ng-content></ng-content>
+        
+    </div>
+
+    <div class="card-footer">
+        {{ cFooter }}
+    </div>
+
+</div>
+
+<ng-content></ng-content>

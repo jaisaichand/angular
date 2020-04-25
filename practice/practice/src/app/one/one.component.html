@@ -1,0 +1,34 @@
+<p [appError]="'yellow'">This is an error directive example</p>
+
+<div *ngIf="isTrue; else els" [ngStyle]="isTrue ? {'background': 'green'} : {'background': 'red'}"> This is true! </div>
+
+<ng-template #els >
+   <p [ngStyle]="{'background': 'red'}"> This is false! </p>
+</ng-template>
+
+<div>
+    <ul class="list-group">
+        <li *ngFor="let list of list1; let i = index" class="list-group-item"> {{ list }} - {{i}} </li>
+    </ul>
+</div>
+<input type="text" #textbx [(ngModel)]="well">
+<p> {{ well }} </p>
+<app-child>
+        <h4 class="killl">I dont know what i am doing</h4>
+</app-child>
+
+<app-child [pMessage]="messege" (shouting)="fun2($event)" #child1>
+    <h3 class="filll">Hello Jai!</h3>
+    
+</app-child>
+
+<app-child>
+    <p>dkjn</p>
+</app-child>
+
+<app-child>
+        <p>jjjjjj</p>
+</app-child>
+
+<p> {{ shout1 }} </p>
+<h4> {{ child1.specialSecret }} </h4>
