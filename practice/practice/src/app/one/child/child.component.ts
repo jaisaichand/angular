@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild,
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild, AfterContentInit,
   AfterViewInit, Renderer2, ContentChild } from '@angular/core';
 
 
@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild,
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss']
 })
-export class ChildComponent implements OnInit, AfterViewInit {
+export class ChildComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   @Input() pMessage;
   shout = 'I am shouting';
@@ -16,6 +16,7 @@ export class ChildComponent implements OnInit, AfterViewInit {
   cHeader = 'This is card header';
   cFooter = 'This is card footer';
   unchanged: string;
+
 
   val2: Renderer2;
 
@@ -32,6 +33,11 @@ export class ChildComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     console.log( ' This is an element ' + this.one.nativeElement.innerHTML);
     console.log( ' This is an element ' + this.two.nativeElement.innerHTML);
+
+
+  }
+
+  ngAfterContentInit() {
 
   }
 

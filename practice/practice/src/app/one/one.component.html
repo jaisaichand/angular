@@ -8,14 +8,21 @@
 
 <div>
     <ul class="list-group">
-        <li *ngFor="let list of list1; let i = index" class="list-group-item"> {{ list }} - {{i}} </li>
+        <li  *ngFor="let list of list1; let i = index" class="list-group-item"> {{ list }} </li>
     </ul>
 </div>
 <input type="text" #textbx [(ngModel)]="well">
 <p> {{ well }} </p>
-<app-child>
-        <h4 class="killl">I dont know what i am doing</h4>
-</app-child>
+
+<div #contentPara>
+        <app-child>
+                <h4 class="killl">I dont know what i am doing</h4>
+        </app-child>
+</div>
+
+<input type="text" #ref (keyPress)="onChange($event)">
+
+
 
 <app-child [pMessage]="messege" (shouting)="fun2($event)" #child1>
     <h3 class="filll">Hello Jai!</h3>
@@ -31,4 +38,4 @@
 </app-child>
 
 <p> {{ shout1 }} </p>
-<h4> {{ child1.specialSecret }} </h4>
+<h4 > {{ child1.specialSecret }} </h4>
