@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
+bgcolor = this.appService.generalBcolor;
+textcolor = this.appService.tColor;
+data;
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.appService.clrObs.subscribe(
+      (succ) => {
+        this.bgcolor = succ.bClr;
+        this.textcolor = succ.tClr;
+      }
+    );
+  }
+
+  setStyles() {
+    let styles = {
+'background': this.bgcolor,
+'color': this.textcolor
+    };
+    return styles;
   }
 
 }
