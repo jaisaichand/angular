@@ -22,9 +22,9 @@ data;
   }
 
   setStyles() {
-    let styles = {
-'background': this.bgcolor,
-'color': this.textcolor
+    const styles = {
+          background: this.bgcolor,
+          color: this.textcolor
     };
     return styles;
   }

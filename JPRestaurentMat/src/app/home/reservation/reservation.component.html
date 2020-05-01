@@ -1,0 +1,45 @@
+<div style="height: auto;
+width: 100vw;
+background: black;
+overflow: hidden;
+">
+        <div [ngStyle]="backImg()" class="p-2 dark1" [ngStyle]="textColor()">
+                <div class="d-flex justify-content-center mt-2">
+                        <h3><span class="p-2 rounded" [ngStyle]="resStyle()">RESERVATION</span></h3>
+                </div>
+                <br>
+            <div class="d-flex justify-content-around" [ngStyle]="textColor()">
+                <span class="br1">
+                        <mat-form-field [ngStyle]="textColor()">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" (click)="picker.open()" (dateInput)="OnDateChange($event.value)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                              
+                </span>
+                       <span class="br1">
+                            <div>
+                                    <p><label for="timepicker">Select time</label></p>
+                                    <p><ngb-timepicker id="timepicker" [(ngModel)]="time1"></ngb-timepicker></p>
+                            </div>
+                       </span>
+                <span class="br1">
+                        <mat-form-field>
+                                <mat-label>Select an option</mat-label>
+                                <mat-select [(value)]="selected">
+                                  <mat-option value="none">None</mat-option>
+                                  <mat-option *ngFor="let pSize of partySize" [value]="pSize">{{ pSize }}</mat-option>
+                                </mat-select>
+                        </mat-form-field>
+                </span>
+                <div class="fun1">
+                    <p><span>Your booking order:</span></p>
+                    <p *ngIf="dateSelected"><span>Date: </span> <span>{{ dateSelected }}</span></p>
+                    <p *ngIf="time1"><span>Time: </span> <span>{{ time1.hour }} : {{ time1.minute }}</span></p>
+                    <p>Members: {{ selected }}</p>
+                    <p class="d-flex justify-content-center"><button (click)="bookNow()" [ngStyle]="textColor()" class="btn btn-dark">Book Now</button></p>
+                </div>
+            </div>
+            </div>
+</div>

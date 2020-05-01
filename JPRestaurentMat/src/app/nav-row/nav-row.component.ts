@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../app.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-row',
@@ -9,11 +10,12 @@ import { AppService } from '../app.service';
 export class NavRowComponent implements OnInit, OnDestroy {
   backclr = this.appService.bColor;
   textclr;
+  subscription: Subscription;
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.appService.clrObs.subscribe(
+   this.subscription = this.appService.clrObs.subscribe(
       (succ) => {
         this.backclr = succ.bClr;
         this.textclr = succ.tClr;
@@ -29,6 +31,6 @@ export class NavRowComponent implements OnInit, OnDestroy {
    }
 
    ngOnDestroy() {
-    this.appService.clrObs.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }
