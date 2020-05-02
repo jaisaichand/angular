@@ -1,0 +1,15 @@
+<h5 class="text-center">Your Bill:</h5>
+<div>
+    <div class="d-flex justify-content-around">
+        <span>Item Name</span>
+        <span>Item Cost</span>
+        <span>Quantity</span>
+    </div>
+
+    <div class="d-flex justify-content-around" *ngFor="let finOrder of finOrders; let i=index">
+        <span>{{ finOrder.item.name }}</span>
+        <span>{{ finOrder.item.price }}</span>
+        <span>{{ finOrder.qty }}</span>
+    </div>
+</div>
+

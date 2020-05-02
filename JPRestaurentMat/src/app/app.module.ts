@@ -9,7 +9,8 @@ import { MatToolbarModule,
          MatInputModule,
          MatRippleModule,
          MatNativeDateModule,
-         MatSelectModule} from '@angular/material';
+         MatSelectModule,
+         MatExpansionModule} from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -25,6 +26,16 @@ import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { ReservationComponent } from './home/reservation/reservation.component';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ServicesComponent } from './services/services.component';
+import { AboutComponent } from './about/about.component';
+import { BillComponent } from './cart/bill/bill.component';
+import { DeliveryComponent } from './cart/delivery/delivery.component';
+import { PaymentComponent } from './cart/payment/payment.component';
+import { CartComponent } from './cart/cart.component';
+import { AppService } from './app.service';
+
 
 
 @NgModule({
@@ -35,7 +46,14 @@ import { FormsModule } from '@angular/forms';
     NavRowComponent,
     HomeComponent,
     CarouselComponent,
-    ReservationComponent
+    ReservationComponent,
+    MenuComponent,
+    ServicesComponent,
+    AboutComponent,
+    BillComponent,
+    DeliveryComponent,
+    PaymentComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +73,11 @@ import { FormsModule } from '@angular/forms';
     NgbTimepickerModule,
     FormsModule,
     MatSelectModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatExpansionModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
