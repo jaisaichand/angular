@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuService } from './menu.service';
 import { MenuItem } from '../shared/menu-item.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
+import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -37,77 +39,80 @@ curriesSubs: Subscription;
 dessertsSubs: Subscription;
 
     mainMenu: string[];
-    constructor(private menuService: MenuService) {
+    constructor(private menuService: MenuService, private appService: AppService, private router: Router) {
 
     }
+
+    throwOrders = new Subject();
     ngOnInit() {
         // this.menuService.pushStarters();
         // this.menuService.getStarters();
-        this.starterSubs = this.menuService.starterSubj.subscribe(
+        this.starterSubs = this.appService.starterSubj.subscribe(
             (val) => {
                 this.starters = val;
 
             }
         );
 
-        this.menuService.getStarters();
+        this.appService.getStarters();
         // ======================
-        this.soupsSubs = this.menuService.soupsSubj.subscribe(
+        this.soupsSubs = this.appService.soupsSubj.subscribe(
             (val) => {
                 this.soups = val;
 
             }
         );
 
-        this.menuService.getSoups();
+        this.appService.getSoups();
         // ======================
-        this.tandooriSubs = this.menuService.tandooriSubj.subscribe(
+        this.tandooriSubs = this.appService.tandooriSubj.subscribe(
             (val) => {
                 this.tandoori = val;
             }
         );
 
-        this.menuService.getTandoori();
+        this.appService.getTandoori();
         // ======================
-        this.biryaniSubs = this.menuService.biryaniSubj.subscribe(
+        this.biryaniSubs = this.appService.biryaniSubj.subscribe(
             (val) => {
                 this.biryani = val;
             }
         );
 
-        this.menuService.getBiryanis();
+        this.appService.getBiryanis();
         // ======================
-        this.chineeseSubs = this.menuService.chineeseSubj.subscribe(
+        this.chineeseSubs = this.appService.chineeseSubj.subscribe(
             (val) => {
                 this.chineese = val;
             }
         );
 
-        this.menuService.getChineese();
+        this.appService.getChineese();
         // ======================
-        this.dessertsSubs = this.menuService.desertsSubj.subscribe(
+        this.dessertsSubs = this.appService.desertsSubj.subscribe(
             (val) => {
                 this.desserts = val;
             }
         );
 
-        this.menuService.getDeserts();
+        this.appService.getDeserts();
         // ======================
-        this.curriesSubs = this.menuService.curriesSubj.subscribe(
+        this.curriesSubs = this.appService.curriesSubj.subscribe(
             (val) => {
                 this.curries = val;
             }
         );
 
-        this.menuService.getCurries();
+        this.appService.getCurries();
                 // ======================
-        this.beveragesSubs = this.menuService.beveragesSubj.subscribe(
+        this.beveragesSubs = this.appService.beveragesSubj.subscribe(
                     (val) => {
                         this.beverages = val;
                     }
                 );
 
-        this.menuService.getBeverages();
+        this.appService.getBeverages();
+        // this.pushOrders();
 
     }
 
@@ -190,66 +195,30 @@ dessertsSubs: Subscription;
         this.beverages[ind].qty = this.beverages[ind].qty - 1;
     }
 
-    saveOrdersMenu() {
-        this.starters.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.startersOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.soups.forEach((val, ind) => {
-            if ( val.qty > 0 ) {
-                this.soupsOrders.push({index: ind, quantity: val.qty});
-            }
-        } );
-
-        this.curries.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.curriesOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.biryani.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.biryaniOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.chineese.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.chineeseOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.desserts.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.dessertsOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.tandoori.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.tandooriOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.beverages.forEach( (val, ind) => {
-            if ( val.qty > 0 ) {
-                this.beveragesOrders.push({index: ind, quantity: val.qty});
-            }
-        });
-
-        this.menuService.finalOrders(this.startersOrders, this.soupsOrders, this.curriesOrders,
-             this.biryaniOrders, this.chineeseOrders, this.dessertsOrders,
-              this.tandooriOrders, this.beveragesOrders);
-
+    pushOrders() {
+        this.appService.totalFinalOrd.next(this.starters);
+        console.log('menu component' + this.starters);
+        this.appService.receivedOrder.push(this.starters);
+        this.appService.receivedOrder.push(this.soups);
+        this.appService.receivedOrder.push(this.curries);
+        this.appService.receivedOrder.push(this.biryani);
+        this.appService.receivedOrder.push(this.chineese);
+        this.appService.receivedOrder.push(this.desserts);
+        this.appService.receivedOrder.push(this.tandoori);
+        this.appService.receivedOrder.push(this.beverages);
+        this.router.navigate(['/cart']);
     }
-
-    cancelOrdersMenu() {}
-
 
     ngOnDestroy() {
+        this.beveragesSubs.unsubscribe();
         this.starterSubs.unsubscribe();
+        this.soupsSubs.unsubscribe();
+        this.curriesSubs.unsubscribe();
+        this.biryaniSubs.unsubscribe();
+        this.chineeseSubs.unsubscribe();
+        this.dessertsSubs.unsubscribe();
+        this.tandooriSubs.unsubscribe();
     }
+
 
 }
