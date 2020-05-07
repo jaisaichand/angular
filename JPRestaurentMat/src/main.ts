@@ -11,3 +11,6 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+
+  // Solely developed by jai sai chand(t.jaisaichand4@gmail.com)

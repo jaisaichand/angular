@@ -14,3 +14,5 @@ export class MenuService {
     totalMenu;
 
 }
+
+// Solely developed by jai sai chand(t.jaisaichand4@gmail.com)

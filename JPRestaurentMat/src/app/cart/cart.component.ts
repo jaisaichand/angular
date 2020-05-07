@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-cart',
@@ -8,3 +7,6 @@ import { AppService } from '../app.service';
 export class CartComponent  {
 
 }
+
+
+// Solely developed by jai sai chand(t.jaisaichand4@gmail.com)

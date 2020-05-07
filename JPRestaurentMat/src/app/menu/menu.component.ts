@@ -220,5 +220,9 @@ dessertsSubs: Subscription;
         this.tandooriSubs.unsubscribe();
     }
 
+    cancelOrdersMenu() {}
 
 }
+
+
+// Solely developed by jai sai chand(t.jaisaichand4@gmail.com)

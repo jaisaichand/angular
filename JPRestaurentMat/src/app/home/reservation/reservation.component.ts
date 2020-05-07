@@ -53,4 +53,8 @@ export class ReservationComponent implements OnInit {
         };
         return textcolor;
     }
+
+    bookNow() {}
+
+
 }
