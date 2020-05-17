@@ -1,34 +1,33 @@
 <div class="d-flex justify-content-between " style="border-bottom: 1px solid rgb(175, 175, 175);">
     <h5 class="pb-4" style=" font-family: 'Times New Roman', Times, serif;">Signup</h5>
-    <span><button class="btn btn-sm text-white rounded btn-danger" (click)="closeIt()" >X</button></span>
+    <span><button class="btn btn-sm rounded " (click)="closeIt()" >x</button></span>
 </div>
 
-<form >
+<form [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()" (change)="onFormChange()">
     <div class="d-flex">
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Full Name</mat-label>
-            <input matInput placeholder="Full Name">
+            <input formControlName="fullName" matInput placeholder="Full Name">
         </mat-form-field>
     </div>
 
     <div class="d-flex">
         <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" type="email">
+            <input matInput placeholder="Email" formControlName="email" type="email">
         </mat-form-field>
     </div>
 
     <div class="full-width" id="phn_div">
             <input class="full-width"  type="text" ng2TelInput (hasError)="hasError($event)" (ng2TelOutput)="getNumber($event)" (intlTelInputObject)="telInputObject($event)" 
- (countryChange)="onCountryChange($event)" id="phone"/>
+ (countryChange)="onCountryChange($event)" id="phone" formControlName="phone" />
 
     </div>
 
     <div class="mt-3">
-        <input type="checkbox" id="checkb">
+        <input type="checkbox" id="checkb" formControlName="checkb">
         <label for="checkb" class="ml-2"><small>I agree to Anthakshari's Terms of Service, Privacy policy and Content policies</small></label>
     </div>
-
+    <button class="btn btn-block btn-danger mt-2 " [disabled]="!signupForm.valid" type="submit">Signup</button>    
 </form>
 
-<button class="btn btn-block btn-danger mt-2 ">Signup</button>

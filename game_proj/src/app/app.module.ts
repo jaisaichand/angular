@@ -8,6 +8,7 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeaderComponent } from './shared/header/header.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, MatDialogModule, Ng2TelInputModule, MatFormFieldModule, MatInputModule
+    BrowserAnimationsModule, MatDialogModule, Ng2TelInputModule,
+     MatFormFieldModule, MatInputModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
