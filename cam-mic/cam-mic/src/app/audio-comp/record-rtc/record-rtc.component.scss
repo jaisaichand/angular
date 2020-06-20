@@ -1,0 +1,44 @@
+.video {
+    box-shadow: 1px 6px 10px 2px rgba(35, 35, 35, 0.62);
+    height: 600px;
+    max-height: 800px;
+    width: 1067px;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+  }
+
+  .start-button {
+    background-color: #7ffe9f; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .stop-button {
+    background-color: rgba(118, 146, 254, 0.69); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .cancel-button {
+    background-color: #af7541; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }

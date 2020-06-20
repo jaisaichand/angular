@@ -1,0 +1,13 @@
+<div style="text-align:center">
+    <h1>
+     Audio 2
+    </h1>
+  
+    <button (click)="initiateRecording()" class="btn btn-primary" *ngIf="!recording"> Start Recording </button>
+      <button (click)="stopRecording()" class="btn btn-danger" *ngIf="recording"> Stop Recording </button>
+      <div class="clearfix"></div>
+      <audio controls="" *ngIf="url">
+          <source [src]="sanitize(url)" type="audio/mp3">
+      </audio>
+  
+  </div>
