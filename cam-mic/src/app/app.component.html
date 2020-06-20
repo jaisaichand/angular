@@ -1,0 +1,73 @@
+<div style="text-align:center">
+  <h1>
+    Webcam
+  </h1>
+
+  <div>
+    <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions"
+            [imageQuality]="1"
+            (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"
+    ></webcam>
+    <br/>
+    <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+    
+    <br/>
+    
+    
+    <br/>
+    <!--
+      <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+<button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
+      ======================Allow camera switch============================
+<input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label>
+
+===========================Device Id ===============================
+DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
+    <button (click)="showNextWebcam(deviceId);">Activate</button>
+    -->
+    
+  </div>
+</div>
+
+<div class="snapshot" *ngIf="webcamImage">
+  <h2>Nice one!</h2>
+  <img [src]="webcamImage.imageAsDataUrl"/>
+  
+</div>
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+  <li>{{error | json}}</li>
+</ul>
+
+
+<h2>Photos array</h2>
+<div class="snapshot" *ngFor="let pic of photosArray">
+
+  <img [src]="pic" width="300px" height="300px">
+</div>
+
+
+
+<h1>=======================================</h1>
+<h1>Audio</h1>
+<app-record-rtc></app-record-rtc>
+
+<h1>=======================================</h1>
+<h1>working audio</h1>
+<app-audio-comp></app-audio-comp>
+
+<h1>=====================================</h1>
+<span style='font-size:100px;'>&#x231A;</span>
+
+&#x231A;
+
+<button (click)="ins(8986)">insert</button>
+
+<input type="text" #inp >
+<p #ep>&#x231A;</p>
+
+<p>{{val1}}</p>
