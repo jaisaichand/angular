@@ -1,0 +1,22 @@
+<div class="pl-5 pt-5">
+    <div class="hand" (click)="uploadIt()">
+        <fa name="upload" size="4x"></fa>
+    </div>
+</div>
+
+<input class="d-none" multiple="multiple" type="file" #coreInp id="coreInput" (change)="onFileUpload($event)">
+
+<div>
+    <ul class="list-group">
+        <li class="list-group-item imgsList liElem" *ngFor="let img of imagesUrLArr">
+            <img [src]="img" class="imgs">
+            <div class="options">
+                <span><button (click)="viewImg()" class="btn btn-sm btn-success">view</button></span>
+                <span><button (click)="removeImg()" class="btn-sm btn btn-danger">Remove</button></span>
+            </div>
+        </li>
+        <li class="list-group-item" *ngFor="let name of fileNamesArr">
+            {{name}}
+        </li>
+    </ul>
+</div>

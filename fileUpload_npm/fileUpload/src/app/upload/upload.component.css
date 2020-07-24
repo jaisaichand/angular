@@ -1,0 +1,25 @@
+.hand {
+  cursor: pointer;
+}
+
+.imgsList {
+  height: 27vh;
+  max-width: 58vw;
+}
+
+.imgs {
+  height: 100%;
+  background-size: cover;
+  width: 100%;
+  object-fit: cover;
+}
+
+.liElem {
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  top: 36%;
+  right: -16%;
+}
