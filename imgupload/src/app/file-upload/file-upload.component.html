@@ -1,0 +1,5 @@
+<div class="form-group">
+    <button class="btn btn-sm btn-danger" (click)="fileU.click">Upload</button>
+    <label for="file">Choose File</label>
+    <input type="file" id="file" #fileU (change)="handleFileInput($event.target.files)">
+</div>

@@ -1,0 +1,11 @@
+<angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="DocUpload($event)">
+</angular-file-uploader>
+
+
+<input type="file" #fileUpload id="fileupload" style="visibility: hidden;">
+
+<button class="btn btn-sm btn-danger" (click)="uploadClicked()">Upload</button>
+
+<app-file-upload></app-file-upload>
+
+<input type="file" ng2FileSelect [uploader]="uploader" multiple (onFileSelected)="onFileSelected($event)" />
