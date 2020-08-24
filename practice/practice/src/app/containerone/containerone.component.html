@@ -1,1 +1,12 @@
-<p>containerone works!</p>
+<div class="w-100 h-100 bg-warning">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div><app-childone [parentData]="dataToChild"></app-childone></div>
+            </div>
+            <div class="col-md-6">
+                <div><app-parentone (dataa)="dataReceived($event)"></app-parentone></div>
+            </div>
+        </div>
+    </div>
+</div>

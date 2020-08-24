@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-parentone',
@@ -8,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class ParentoneComponent implements OnInit {
 
   constructor() { }
+  initialText = 'ammababoi ismart shankar';
+
+  @Output() dataa = new EventEmitter();
 
   ngOnInit() {
+  }
+
+  clicked() {
+    this.initialText = this.initialText + this.initialText;
+    this.dataa.emit(this.initialText);
   }
 
 }

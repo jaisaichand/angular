@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContaineroneComponent implements OnInit {
 
+  dataToChild = 'Default data';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+
+  dataReceived(dat) {
+    console.log(dat);
+    this.dataToChild = dat;
   }
 
 }

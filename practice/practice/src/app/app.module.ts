@@ -10,13 +10,14 @@ import { ChildComponent } from './one/child/child.component';
 import { TestDirective } from './shared/test.directive';
 import { ParentoneComponent } from './parentone/parentone.component';
 import { ContaineroneComponent } from './containerone/containerone.component';
+import { ChildoneComponent } from './childone/childone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OneComponent,
     ErrorDirective,
-    ChildComponent, TestDirective, ParentoneComponent, ContaineroneComponent
+    ChildComponent, TestDirective, ParentoneComponent, ContaineroneComponent, ChildoneComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule
