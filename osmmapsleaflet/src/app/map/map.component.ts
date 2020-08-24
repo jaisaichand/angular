@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
+import 'leaflet-routing-machine';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -31,6 +32,8 @@ marker;
 pointA;
 pointB;
 polyline;
+prevpath;
+prevMarker;
   ngOnInit() {
   this.map = L.map('map').setView([17.407332, 78.444923], 16);
 
@@ -43,7 +46,7 @@ polyline;
        // .openPopup();
 
   this.pointA = new L.LatLng(17.407332, 78.444923);
-  L.circle([17.407332, 78.444923], 500).addTo(this.map);
+  L.circle([17.407332, 78.444923], 300).addTo(this.map);
 
   if (L.marker !== undefined) {
         this.map.removeLayer(L.marker);
@@ -67,29 +70,38 @@ polyline;
   }
 
    newMarker(e) {
+     if (this.prevpath !== undefined) {
+      this.prevpath.spliceWaypoints(0, 2);
+     }
+     this.marker = undefined;
+    // console.log('event is ', e );
+    // console.log('marker is ', this.marker);
 
-     console.log('event is ', e );
-     console.log('marker is ', this.marker);
-     if (this.marker !== undefined) {
-      this.map.removeLayer(this.marker);
+     if (this.marker === undefined) {
+
+} else {
+  this.map.removeLayer(this.marker);
 }
 
      if (this.polyline !== undefined) {
   this.map.removeLayer(this.polyline);
 }
      this.pointB = new L.LatLng(e.latlng.lat, e.latlng.lng);
-     this.marker = new L.marker(e.latlng).addTo(this.map);
+    // this.marker = L.marker(e.latlng).addTo(this.map);
+     this.prevMarker =  L.marker(e.latlng);
+     console.log('marker after is', this.marker);
 
 
      const pointList = [this.pointA, this.pointB];
 
-     this.polyline = new L.polyline(pointList, {
-    color: 'red',
-    weight: 3,
-    opacity: 0.5,
-    smoothFactor: 1
-  });
-     this.polyline.addTo(this.map);
+
+
+     this.prevpath =  L.Routing.control({
+      waypoints: [
+          L.latLng(17.407332, 78.444923),
+          L.latLng(e.latlng.lat, e.latlng.lng)
+      ]
+  }).addTo(this.map);
 }
 
   private initMap(): void {
@@ -104,6 +116,7 @@ polyline;
     });
 
     tiles.addTo(this.map);
+
   }
 
 

@@ -8,13 +8,15 @@ import { ErrorDirective } from './one/error.directive';
 import { CommonModule } from '@angular/common';
 import { ChildComponent } from './one/child/child.component';
 import { TestDirective } from './shared/test.directive';
+import { ParentoneComponent } from './parentone/parentone.component';
+import { ContaineroneComponent } from './containerone/containerone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OneComponent,
     ErrorDirective,
-    ChildComponent, TestDirective
+    ChildComponent, TestDirective, ParentoneComponent, ContaineroneComponent
   ],
   imports: [
     BrowserModule, CommonModule, FormsModule
