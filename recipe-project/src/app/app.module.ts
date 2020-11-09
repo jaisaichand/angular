@@ -8,10 +8,11 @@ import { RecipeService } from './recipes/recipe.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { SharedModule } from './shared/shared.module';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent
+    AppComponent, HeaderComponent, AboutusComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, SharedModule

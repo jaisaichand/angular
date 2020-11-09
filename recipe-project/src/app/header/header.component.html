@@ -1,42 +1,46 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Jai P&P</a>
-      </div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Jai P&P</a>
     </div>
-    
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav nav">
-        <li routerLinkActive = "active" *ngIf="isAuthenticated">
-          <a class="nav-link" routerLink = "/recipes" >Recipes</a>
-        </li>
+  </div>
 
-        <li routerLinkActive = "active">
-          <a class="nav-link" routerLink = "/shopping-list">Shopping-List</a>
-        </li>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav nav">
+      <li routerLinkActive="active" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLink="/recipes">Recipes</a>
+      </li>
 
-        <li routerLinkActive = "active" *ngIf="!isAuthenticated">
-          <a class="nav-link" routerLink = "/auth">Authenticate</a>
-        </li>
-      </ul>
+      <li routerLinkActive="active">
+        <a class="nav-link" routerLink="/shopping-list">Shopping-List</a>
+      </li>
 
-      <ul class="navbar navbar-right list-group navbar-nav nav">
-        <li *ngIf="isAuthenticated" class="nav-item list-group-item btn-sm btn" (click)="onLogout()">
-          <a style="cursor: pointer; padding: 5px;" >Logout</a>
-        </li>
-        <li class=" dropdown nav-item list-group-item btn nav-link btn-sm" appDropdown *ngIf="isAuthenticated">
-          <a class="dropdown-toggle nav-link btn btn-sm" role="button" style="padding: 4px;">
-            Manage
-          </a>
-          <div class="dropdown-menu">
-            <li><a class="dropdown-item btn" (click)="onSaveData()" role="button">Save data</a></li>
-            <li><a class="dropdown-item btn" role="button" (click)="onFetchData()">Fetch data</a></li>
-            
-            
-          </div>
-        </li>
-        
-      </ul>
-      
-    </div>
-  </nav>
+      <li routerLinkActive="active" *ngIf="!isAuthenticated">
+        <a class="nav-link" routerLink="/auth">Authenticate</a>
+      </li>
+
+      <li routerLinkActive="active">
+        <a class="nav-link" routerLink="/aboutus">About Us</a>
+      </li>
+    </ul>
+
+    <ul class="navbar navbar-right list-group navbar-nav nav">
+      <li *ngIf="isAuthenticated" class="nav-item list-group-item btn-sm btn" (click)="onLogout()">
+        <a style="cursor: pointer; padding: 5px;">Logout</a>
+      </li>
+      <li class=" dropdown nav-item list-group-item btn nav-link btn-sm" appDropdown *ngIf="isAuthenticated">
+        <a class="dropdown-toggle nav-link btn btn-sm" role="button" style="padding: 4px;">
+          Manage
+        </a>
+        <div class="dropdown-menu">
+      <li><a class="dropdown-item btn" (click)="onSaveData()" role="button">Save data</a></li>
+      <li><a class="dropdown-item btn" role="button" (click)="onFetchData()">Fetch data</a></li>
+
+
+  </div>
+  </li>
+
+  </ul>
+
+  </div>
+</nav>
